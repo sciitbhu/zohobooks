@@ -1,0 +1,18 @@
+# Secrets — never commit
+.env
+
+# Python
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Logs
+logs/*.log
+logs/*.zip
+
+# macOS
+.DS_Store
+
+# Generated reports (optional — comment out if you WANT reports in git)
+# Zoho_MIS_Reports/

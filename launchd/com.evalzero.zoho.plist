@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    
+    <key>Label</key>
+    <string>com.evalzero.zoho</string>
+
+    
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/shrijachirania/Downloads/zoho_claude_intelligence/venv/bin/python</string>
+        <string>-m</string>
+        <string>mis.generate_mis_report</string>
+    </array>
+
+    <!-- Run from the project root so relative imports and .env loading work. -->
+    <key>WorkingDirectory</key>
+    <string>/Users/shrijachirania/Downloads/zoho_claude_intelligence</string>
+
+    <!--
+    StartCalendarInterval fires the job at 08:00 AM on day 1 of every
+    month. Omitting "Weekday" and "Month" keys means "every month".
+    -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Day</key>
+        <integer>1</integer>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <!--
+    Captures stdout/stderr so you can check *why* a run failed without
+    needing the Mac to be actively logged in and watching Terminal.
+    These paths must exist (launchd will create the files but not the
+    parent directory) — the install steps in README.md create ./logs first.
+    -->
+    <key>StandardOutPath</key>
+    <string>/Users/shrijachirania/Downloads/zoho_claude_intelligence/logs/launchd_stdout.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/Users/shrijachirania/Downloads/zoho_claude_intelligence/logs/launchd_stderr.log</string>
+    <!--
+    RunAtLoad = false: we only want this on the 1st @ 08:00, not every time
+    you log in / the plist is loaded. Set true temporarily if you want to
+    smoke-test the job immediately after `launchctl load`.
+    -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <!--
+    Note on sleep/missed runs: launchd automatically fires a missed
+    StartCalendarInterval job as soon as the Mac next wakes if it was
+    asleep at the scheduled time — no extra key is needed for that.
+    If your Mac is reliably OFF (not just asleep) at 08:00 on the 1st,
+    consider changing Hour to a time you know it will be awake, since
+    launchd cannot resurrect a fully powered-off machine.
+    -->
+
+    <key>ProcessType</key>
+
+    <string>Background</string>
+</dict>
+</plist>

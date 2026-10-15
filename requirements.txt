@@ -1,0 +1,23 @@
+# --- Web server / webhook ---
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+
+# --- HTTP client (async, used by both Zoho + Claude wrappers) ---
+httpx==0.27.2
+
+# --- Anthropic official SDK ---
+anthropic==0.34.2
+
+# --- Config / env management ---
+python-dotenv==1.0.1
+pydantic==2.9.2
+pydantic-settings==2.5.2
+
+# --- Retry / resilience ---
+tenacity==9.0.0
+
+# --- Scheduling helper (optional local testing; launchd is used for real prod scheduling) ---
+python-dateutil==2.9.0.post0
+
+# --- Logging (structured, rotating) ---
+loguru==0.7.2
